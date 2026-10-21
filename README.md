@@ -61,6 +61,8 @@ npx playwright install chromium
 | `CONTACT_WEBHOOK_URL` | Servidor | Endpoint que recibe el POST JSON del formulario. Sin él, el formulario permanece en modo demostración. |
 | `CONTACT_WEBHOOK_TOKEN` | Servidor | Opcional. Se envía como `Authorization: Bearer <token>`. No debe llevar prefijo `NEXT_PUBLIC_`. |
 
+En producción, `NEXT_PUBLIC_SITE_URL` está definida como `https://vertice-mocha.vercel.app`. No hay `CONTACT_WEBHOOK_URL` configurada, por lo que el formulario permanece en modo demostración.
+
 ### Comportamiento sin webhook
 
 Si `CONTACT_WEBHOOK_URL` no está definida:
@@ -182,6 +184,12 @@ Las capturas se regeneran con:
 npm run screenshots
 ```
 
+## Despliegue
+
+Producción: <https://vertice-mocha.vercel.app>
+
+El proyecto está desplegado en Vercel. La URL canónica se configura en producción con `NEXT_PUBLIC_SITE_URL`. La indexación sigue desactivada y el formulario responde `503 NOT_CONFIGURED` mientras no exista un webhook real.
+
 ## Capturas
 
 | Archivo | Contenido |
@@ -220,4 +228,6 @@ npm run screenshots
 
 Repositorio: <https://github.com/kbdigitalstudio/Vertice>
 
-Proyecto conceptual publicado como código fuente en GitHub. Sin despliegue, sin integración de datos reales y sin dominio publicado. La indexación permanece desactivada por defecto.
+Producción: <https://vertice-mocha.vercel.app>
+
+Proyecto conceptual desplegado en Vercel, sin dominio personalizado, sin integración de datos reales y sin webhook de contacto. La indexación permanece desactivada; el formulario responde `503 NOT_CONFIGURED` y no transmite datos.
